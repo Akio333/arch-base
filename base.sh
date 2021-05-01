@@ -22,11 +22,11 @@ echo "::1       localhost" >> /etc/hosts
 echo "127.0.1.1 $hostvar.localdomain $hostvar" >> /etc/hosts
 
 # Base Install
-pacman -S --noconfirm grub efibootmgr dialog wpa_supplicant mtools dosfstools reflector base-devel linux-headers avahi xdg-user-dirs xdg-utils gvfs gvfs-smb bash-completion openssh rsync reflector dnsmasq vde2 openbsd-netcat ebtables iptables ipset acpid os-prober ntfs-3g terminus-font
+pacman -S grub efibootmgr dialog wpa_supplicant mtools dosfstools reflector base-devel linux-headers avahi xdg-user-dirs xdg-utils gvfs gvfs-smb bash-completion openssh rsync reflector dnsmasq vde2 openbsd-netcat ebtables iptables ipset acpid os-prober ntfs-3g terminus-font
 
 # GPU Drivers installation
 # pacman -S --noconfirm xf86-video-amdgpu
-# pacman -S --noconfirm nvidia nvidia-prime nvidia-utils nvidia-settings 
+pacman -S nvidia nvidia-prime nvidia-utils nvidia-settings 
 
 # Install BootLoader
 grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
