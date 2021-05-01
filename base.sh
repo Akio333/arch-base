@@ -22,7 +22,7 @@ echo "::1       localhost" >> /etc/hosts
 echo "127.0.1.1 $hostvar.localdomain $hostvar" >> /etc/hosts
 
 # Base Install
-pacman -S grub efibootmgr dialog wpa_supplicant mtools dosfstools reflector base-devel linux-headers avahi xdg-user-dirs xdg-utils gvfs gvfs-smb bash-completion openssh rsync reflector dnsmasq vde2 openbsd-netcat ebtables iptables ipset acpid os-prober ntfs-3g terminus-font
+pacman -S grub efibootmgr dialog wpa_supplicant mtools dosfstools reflector base-devel linux-headers avahi xdg-user-dirs xdg-utils gvfs gvfs-smb bash-completion openssh rsync reflector dnsmasq vde2 openbsd-netcat ebtables iptables ipset acpid os-prober ntfs-3g terminus-font networkmanager
 
 # GPU Drivers installation
 # pacman -S --noconfirm xf86-video-amdgpu
@@ -39,11 +39,12 @@ systemctl enable tlp
 systemctl enable reflector.timer
 systemctl enable fstrim.timer
 systemctl enable acpid
+systemctl enable NetworkManager
 
 # Creating User
 useradd -m $uservar
 echo $uservar:$passvar | chpasswd
-usermod -aG libvirt,wheel,audio,video,input,lp,storage,users,network,power $uservar
+usermod -aG wheel,audio,video,input,lp,storage,users,network,power $uservar
 
 # Modify sudoers
 echo "%wheel ALL=(ALL) ALL" >> /etc/sudoers.d/$uservar
